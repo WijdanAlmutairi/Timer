@@ -15,6 +15,7 @@
 		A8AC35E52B717AE3004453FB /* TimerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AC35E42B717AE3004453FB /* TimerUITests.swift */; };
 		A8AC35E72B717AE3004453FB /* TimerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AC35E62B717AE3004453FB /* TimerUITestsLaunchTests.swift */; };
 		A8AC35F52B72B35F004453FB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8AC35F42B72B35F004453FB /* Launch Screen.storyboard */; };
+		A8AC35F92B72B924004453FB /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AC35F82B72B924004453FB /* PickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		A8AC35E62B717AE3004453FB /* TimerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A8AC35F32B72B248004453FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		A8AC35F42B72B35F004453FB /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		A8AC35F82B72B924004453FB /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				A8AC35F32B72B248004453FB /* Info.plist */,
 				A8AC35C92B717AE2004453FB /* TimerApp.swift */,
 				A8AC35CB2B717AE2004453FB /* ContentView.swift */,
+				A8AC35F82B72B924004453FB /* PickerView.swift */,
 				A8AC35CD2B717AE3004453FB /* Assets.xcassets */,
 				A8AC35CF2B717AE3004453FB /* Preview Content */,
 				A8AC35F42B72B35F004453FB /* Launch Screen.storyboard */,
@@ -265,6 +268,7 @@
 			files = (
 				A8AC35CC2B717AE2004453FB /* ContentView.swift in Sources */,
 				A8AC35CA2B717AE2004453FB /* TimerApp.swift in Sources */,
+				A8AC35F92B72B924004453FB /* PickerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
