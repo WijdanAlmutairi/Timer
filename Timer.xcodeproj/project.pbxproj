@@ -14,6 +14,7 @@
 		A8AC35DB2B717AE3004453FB /* TimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AC35DA2B717AE3004453FB /* TimerTests.swift */; };
 		A8AC35E52B717AE3004453FB /* TimerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AC35E42B717AE3004453FB /* TimerUITests.swift */; };
 		A8AC35E72B717AE3004453FB /* TimerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AC35E62B717AE3004453FB /* TimerUITestsLaunchTests.swift */; };
+		A8AC35F52B72B35F004453FB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8AC35F42B72B35F004453FB /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,8 @@
 		A8AC35E02B717AE3004453FB /* TimerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8AC35E42B717AE3004453FB /* TimerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerUITests.swift; sourceTree = "<group>"; };
 		A8AC35E62B717AE3004453FB /* TimerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A8AC35F32B72B248004453FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		A8AC35F42B72B35F004453FB /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,10 +97,12 @@
 		A8AC35C82B717AE2004453FB /* Timer */ = {
 			isa = PBXGroup;
 			children = (
+				A8AC35F32B72B248004453FB /* Info.plist */,
 				A8AC35C92B717AE2004453FB /* TimerApp.swift */,
 				A8AC35CB2B717AE2004453FB /* ContentView.swift */,
 				A8AC35CD2B717AE3004453FB /* Assets.xcassets */,
 				A8AC35CF2B717AE3004453FB /* Preview Content */,
+				A8AC35F42B72B35F004453FB /* Launch Screen.storyboard */,
 			);
 			path = Timer;
 			sourceTree = "<group>";
@@ -231,6 +236,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8AC35F52B72B35F004453FB /* Launch Screen.storyboard in Resources */,
 				A8AC35D12B717AE3004453FB /* Preview Assets.xcassets in Resources */,
 				A8AC35CE2B717AE3004453FB /* Assets.xcassets in Resources */,
 			);
@@ -425,12 +431,14 @@
 				DEVELOPMENT_TEAM = FLVVGBMT6V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Timer/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -458,12 +466,14 @@
 				DEVELOPMENT_TEAM = FLVVGBMT6V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Timer/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
