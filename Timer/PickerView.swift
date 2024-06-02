@@ -15,7 +15,7 @@ struct PickerView: View {
     @State private var selectedHour: Int = 0
     @State private var selectedMinute: Int = 0
     @State private var selectedSecond: Int = 0
-    @State private var text: String = "" 
+    @State private var label: String = ""
     var body: some View {
         NavigationView {
             VStack {
@@ -54,7 +54,7 @@ struct PickerView: View {
                         }
                     }
                     Section(header: Text("")){
-                        TextField("Label", text: $text)
+                        TextField("Label", text: $label)
                     }
                     
                 }
@@ -65,7 +65,7 @@ struct PickerView: View {
                             print("h \(selectedHour) ")
                             print("m \(selectedMinute)")
                             print("s \(selectedSecond)")
-                            print("label \(text)")
+                            print("label \(label)")
                     
                         }) {
                             Text("Start")
