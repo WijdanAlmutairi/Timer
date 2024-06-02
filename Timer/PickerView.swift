@@ -16,6 +16,8 @@ struct PickerView: View {
     @State private var selectedMinute: Int = 0
     @State private var selectedSecond: Int = 0
     @State private var label: String = ""
+    @State var isTimerRunning = false
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -24,30 +26,30 @@ struct PickerView: View {
                         HStack {
                             //picker one
                             Picker(selection: $selectedHour, label: Text("hours")) {
-                                    ForEach (hours, id: \.self) { hour in
-                                        Text("\(hour)")
-                                    }
-                                    
+                                ForEach (hours, id: \.self) { hour in
+                                    Text("\(hour)")
+                                }
+                                
                             }.pickerStyle(.wheel)
                             Text("hours")
                                 .bold()
                             
                             //picker two
                             Picker(selection: $selectedMinute, label: Text("hours")) {
-                                    ForEach (minutes, id: \.self) { minute in
-                                        Text("\(minute)")
-                                    }
-                                    
+                                ForEach (minutes, id: \.self) { minute in
+                                    Text("\(minute)")
+                                }
+                                
                             }.pickerStyle(.wheel)
                             Text("min")
                                 .bold()
                             
                             //picker three
                             Picker(selection: $selectedSecond, label: Text("hours")) {
-                                    ForEach (seconds, id: \.self) { second in
-                                        Text("\(second)")
-                                    }
-                                    
+                                ForEach (seconds, id: \.self) { second in
+                                    Text("\(second)")
+                                }
+                                
                             }.pickerStyle(.wheel)
                             Text("sec")
                                 .bold()
@@ -59,24 +61,23 @@ struct PickerView: View {
                     
                 }
                 
-                
-                Button(action: {
-                            // Add your action here
-                            print("h \(selectedHour) ")
-                            print("m \(selectedMinute)")
-                            print("s \(selectedSecond)")
-                            print("label \(label)")
+                NavigationLink(destination:TimerView(selectedHour: $selectedHour, selectedMinute: $selectedMinute, selectedSecond: $selectedSecond, label: $label, isTimerRunning: $isTimerRunning), isActive: $isTimerRunning){
                     
-                        }) {
-                            Text("Start")
-                                .padding(100)
-                                .background(Color.clear)
-                                .font(.largeTitle)
-                                .bold()
-                        }
+                    Button(action: {
+                        self.isTimerRunning = true
+                        
+                    }) {
+                        
+                        Text("Start")
+                            .padding(100)
+                            .background(Color.clear)
+                            .font(.largeTitle)
+                            .bold()
+                    }
+                }
             }
-           
-        .navigationTitle("Timer")
+            
+            .navigationTitle("Timer")
         }
     }
 }

@@ -8,34 +8,39 @@
 import SwiftUI
 
 struct TimerView: View {
-    @State var countDownTimer = 5
-    @State var timerRunning = false
+    @Binding var selectedHour: Int
+    @Binding var selectedMinute: Int
+    @Binding var selectedSecond: Int
+    @Binding var label: String
+    
+    // @State var countDownTimer = 5
+    @Binding var isTimerRunning: Bool
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     var body: some View {
         VStack {
-            Text("\(countDownTimer)")
+            Text("\(selectedSecond)")
                 .onReceive(timer) { _ in
-                    if(countDownTimer > 0 && timerRunning){
-                        countDownTimer -= 1
+                    if(selectedSecond > 0 && isTimerRunning){
+                        selectedSecond -= 1
                     } else {
-                        timerRunning = false
+                        isTimerRunning = false
                     }
                 }.font(.system(size: 80, weight: .bold))
                 .opacity(0.8)
         }
         
         HStack{
-            Button("Satrt") {
-                timerRunning = true
+            Button("Pause") {
+                isTimerRunning = true
             }
             
-            Button("Reset") {
-                countDownTimer = 5
+            Button("Cancel") {
+                //countDownTimer = 5
             }
         }
     }
 }
 
-#Preview {
-    TimerView()
-}
+//#Preview {
+//    TimerView(selectedHour: <#Binding<Int>#>, selectedMinute: <#Binding<Int>#>, selectedSecond: <#Binding<Int>#>, label: <#Binding<String>#>)
+//}
