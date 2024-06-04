@@ -19,49 +19,49 @@ struct TimerView: View {
     
     var body: some View {
         VStack {
-                Text("\(convertSecondsToTime(timeInSeconds: timeRemaining))")
-                    .onReceive(timer) { _ in
-                        
-                        
-                        if(timeRemaining > 0 && isTimerRunning){
-                            timeRemaining -= 1
-                        }
-                        
-                        else {
-                            isTimerRunning = false
-                        }
-                    }.font(.system(size: 80, weight: .bold))
-                    .opacity(0.8)
-        
-        
-        HStack{
-            Button("Pause") {
-                //isTimerRunning = true
-            }
+            Text("\(convertSecondsToTime(timeInSeconds: timeRemaining))")
+                .onReceive(timer) { _ in
+                    
+                    
+                    if(timeRemaining > 0 && isTimerRunning){
+                        timeRemaining -= 1
+                    }
+                    
+                    else {
+                        isTimerRunning = false
+                    }
+                }.font(.system(size: 80, weight: .bold))
+                .opacity(0.8)
             
-            Button("Cancel") {
-                //countDownTimer = 5
-            }
+            
+            HStack{
+                Button("Cancel") {
+                    cancelTimer()
+                }
+                
+                Button("Pause") {
+                    //isTimerRunning = true
+                }
             }
         }.onAppear(){
             // calculate time
-                timeRemaining = calculateTimeInSeconds(hours: selectedHour, minutes: selectedMinute, seconds: selectedSecond)
+            timeRemaining = calculateTimeInSeconds(hours: selectedHour, minutes: selectedMinute, seconds: selectedSecond)
         }
     }
-    
-    func convertSecondsToTime(timeInSeconds: Int) -> String{
+    // Time Functions
+    private func convertSecondsToTime(timeInSeconds: Int) -> String{
         var hours = 0
         var minutes = 0
         var seconds = 0
-    
-            hours = timeInSeconds / 3600
-            minutes = (timeInSeconds % 3600) / 60
-            seconds = (timeInSeconds % 3600) % 60
-            
+        
+        hours = timeInSeconds / 3600
+        minutes = (timeInSeconds % 3600) / 60
+        seconds = (timeInSeconds % 3600) % 60
+        
         return String(format: "%02i:%02i:%02i", hours, minutes, seconds)
     }
     
-    func calculateTimeInSeconds(hours: Int, minutes: Int, seconds: Int) -> Int {
+    private func calculateTimeInSeconds(hours: Int, minutes: Int, seconds: Int) -> Int {
         var totalSeconds = 0
         
         if(hours > 0 || minutes > 0 || seconds > 0){
@@ -72,6 +72,14 @@ struct TimerView: View {
         
         return totalSeconds
     }
+    
+    // Pause, Cancel Button Functions
+    
+    private func cancelTimer() {
+        isTimerRunning = false
+        timeRemaining = 0
+    }
+    
 }
 
 //#Preview {
