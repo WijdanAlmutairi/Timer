@@ -19,11 +19,9 @@ struct TimerView: View {
     
     var body: some View {
         VStack {
-            HStack{
                 Text("\(convertSecondsToTime(timeInSeconds: timeRemaining))")
                     .onReceive(timer) { _ in
-                        // calculate time
-                            timeRemaining = calculateTimeInSeconds(hours: selectedHour, minutes: selectedMinute, seconds: selectedSecond)
+                        
                         
                         if(timeRemaining > 0 && isTimerRunning){
                             timeRemaining -= 1
@@ -34,17 +32,20 @@ struct TimerView: View {
                         }
                     }.font(.system(size: 80, weight: .bold))
                     .opacity(0.8)
-            }
-        }
+        
         
         HStack{
             Button("Pause") {
-                isTimerRunning = true
+                //isTimerRunning = true
             }
             
             Button("Cancel") {
                 //countDownTimer = 5
             }
+            }
+        }.onAppear(){
+            // calculate time
+                timeRemaining = calculateTimeInSeconds(hours: selectedHour, minutes: selectedMinute, seconds: selectedSecond)
         }
     }
     
@@ -67,7 +68,6 @@ struct TimerView: View {
             let hourTotal = hours * 3600
             let minuteTotal = minutes * 60
             totalSeconds = hourTotal + minuteTotal +  seconds
-            print(totalSeconds)
         }
         
         return totalSeconds
