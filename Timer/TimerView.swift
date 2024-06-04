@@ -15,7 +15,8 @@ struct TimerView: View {
     @Binding var isTimerRunning: Bool
     
     @State var timeRemaining = 0
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State var isPaused = false
     
     var body: some View {
         VStack {
@@ -39,9 +40,23 @@ struct TimerView: View {
                     cancelTimer()
                 }
                 
-                Button("Pause") {
-                    //isTimerRunning = true
+                if (isPaused){
+                    Button("Resume") {
+                        timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+                        isPaused = false
+                    }
+                    
+                } else {
+                    Button("Pause") {
+                        timer.upstream.connect().cancel()
+                        isPaused = true
+                        
+                    }
+                    
                 }
+                
+                
+                
             }
         }.onAppear(){
             // calculate time
@@ -78,6 +93,13 @@ struct TimerView: View {
     private func cancelTimer() {
         isTimerRunning = false
         timeRemaining = 0
+    }
+    
+    private func pauseTimer() -> Int{
+        isTimerRunning = false
+        let remainingSeconds = timeRemaining
+        
+        return remainingSeconds
     }
     
 }
