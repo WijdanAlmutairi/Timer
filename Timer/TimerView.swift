@@ -14,26 +14,38 @@ struct TimerView: View {
     @Binding var label: String
     @Binding var isTimerRunning: Bool
     
-    @State var timeRemaining = 0
+    @State var timeRemaining: TimeInterval = 0
     @State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State var isPaused = false
+    @State var totalTime: TimeInterval = 0
     
     var body: some View {
         VStack {
-            Text("\(convertSecondsToTime(timeInSeconds: timeRemaining))")
-                .onReceive(timer) { _ in
+            ZStack {
+                Circle()
+                    .stroke(lineWidth: 15)
+                    .opacity(0.3)
+                
+                Circle()
+                    .trim(from: 0, to: CGFloat(1 - (timeRemaining / totalTime)))
+                    .stroke(style: StrokeStyle(lineWidth: 15, lineCap: .round, lineJoin: .round))
+                    .foregroundColor(Color.accentColor)
+                    .rotationEffect(Angle(degrees: -90))
                     
-                    
-                    if(timeRemaining > 0 && isTimerRunning){
-                        timeRemaining -= 1
-                    }
-                    
-                    else {
-                        isTimerRunning = false
-                    }
-                }.font(.system(size: 80, weight: .bold))
-                .opacity(0.8)
-            
+                Text("\(convertSecondsToTime(timeInSeconds: Int(timeRemaining)))")
+                    .onReceive(timer) { _ in
+                        
+                        
+                        if(timeRemaining > 0 && isTimerRunning){
+                            timeRemaining -= 1
+                        }
+                        
+                        else {
+                            isTimerRunning = false
+                        }
+                    }.font(.largeTitle)
+                    .fontWeight(.bold)
+            }.frame(maxWidth: 320)
             
             HStack{
                 Button("Cancel") {
@@ -61,6 +73,7 @@ struct TimerView: View {
         }.onAppear(){
             // calculate time
             timeRemaining = calculateTimeInSeconds(hours: selectedHour, minutes: selectedMinute, seconds: selectedSecond)
+            totalTime = timeRemaining
         }
     }
     // Time Functions
@@ -76,7 +89,7 @@ struct TimerView: View {
         return String(format: "%02i:%02i:%02i", hours, minutes, seconds)
     }
     
-    private func calculateTimeInSeconds(hours: Int, minutes: Int, seconds: Int) -> Int {
+    private func calculateTimeInSeconds(hours: Int, minutes: Int, seconds: Int) -> TimeInterval {
         var totalSeconds = 0
         
         if(hours > 0 || minutes > 0 || seconds > 0){
@@ -85,7 +98,7 @@ struct TimerView: View {
             totalSeconds = hourTotal + minuteTotal +  seconds
         }
         
-        return totalSeconds
+        return TimeInterval(totalSeconds)
     }
     
     // Pause, Cancel Button Functions
@@ -94,16 +107,4 @@ struct TimerView: View {
         isTimerRunning = false
         timeRemaining = 0
     }
-    
-    private func pauseTimer() -> Int{
-        isTimerRunning = false
-        let remainingSeconds = timeRemaining
-        
-        return remainingSeconds
-    }
-    
 }
-
-//#Preview {
-//    TimerView(selectedHour: <#Binding<Int>#>, selectedMinute: <#Binding<Int>#>, selectedSecond: <#Binding<Int>#>, label: <#Binding<String>#>)
-//}
