@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TimerView: View {
+    //MARK: Declarations
     @Binding var selectedHour: Int
     @Binding var selectedMinute: Int
     @Binding var selectedSecond: Int
@@ -21,6 +22,7 @@ struct TimerView: View {
     
     var body: some View {
         VStack {
+            //MARK: Progress Ring Bar
             ZStack {
                 Circle()
                     .stroke(lineWidth: 15)
@@ -31,7 +33,7 @@ struct TimerView: View {
                     .stroke(style: StrokeStyle(lineWidth: 15, lineCap: .round, lineJoin: .round))
                     .foregroundColor(Color.accentColor)
                     .rotationEffect(Angle(degrees: -90))
-                    
+                
                 Text("\(convertSecondsToTime(timeInSeconds: Int(timeRemaining)))")
                     .onReceive(timer) { _ in
                         
@@ -46,29 +48,51 @@ struct TimerView: View {
                     }.font(.largeTitle)
                     .fontWeight(.bold)
             }.frame(maxWidth: 320)
-            
+            //MARK: Buttons
             HStack{
-                Button("Cancel") {
+                Button(action: {
                     cancelTimer()
+                }){
+                    Text("Cancel")
+                        .frame(width: 80, height: 80)
+                        .foregroundColor(Color.white)
+                        .background(Color("ButtonBgColor"))
+                        .clipShape(Circle())
                 }
                 
+                Spacer()
+                
                 if (isPaused){
-                    Button("Resume") {
+                    Button(action: {
                         timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
                         isPaused = false
+                    }){
+                        Text("Resume")
+                            .frame(width: 80, height: 80)
+                            .foregroundColor(Color.green)
+                            .background(Color("ButtonBgColor"))
+                            .clipShape(Circle())
                     }
                     
                 } else {
-                    Button("Pause") {
+                    Button(action: {
                         timer.upstream.connect().cancel()
                         isPaused = true
-                        
+                    }){
+                        Text("Pause")
+                            .frame(width: 80, height: 80)
+                            .background(Color("PauseBgColor"))
+                            .clipShape(Circle())
                     }
-                    
                 }
                 
-                
-                
+            }.padding()
+            //MARK: Label
+            Form{
+                Section(header: Text("")){
+                    TextField("Label", text: $label)
+                        .disabled(true)
+                }
             }
         }.onAppear(){
             // calculate time
@@ -76,7 +100,7 @@ struct TimerView: View {
             totalTime = timeRemaining
         }
     }
-    // Time Functions
+    //MARK:  Time Functions
     private func convertSecondsToTime(timeInSeconds: Int) -> String{
         var hours = 0
         var minutes = 0
@@ -101,8 +125,7 @@ struct TimerView: View {
         return TimeInterval(totalSeconds)
     }
     
-    // Pause, Cancel Button Functions
-    
+    //MARK:  CancelTimer Function
     private func cancelTimer() {
         isTimerRunning = false
         timeRemaining = 0

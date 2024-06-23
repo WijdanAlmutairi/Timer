@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PickerView: View {
+    //MARK: Declarations
     let hours = Array(0...23)
     let minutes = Array(0...59)
     let seconds = Array(0...59)
@@ -21,10 +22,11 @@ struct PickerView: View {
     var body: some View {
         NavigationView {
             VStack {
+                //MARK: Picker
                 Form {
                     Section(header: Text("")) {
                         HStack {
-                            //picker one
+                            //MARK: Picker One
                             Picker(selection: $selectedHour, label: Text("hours")) {
                                 ForEach (hours, id: \.self) { hour in
                                     Text("\(hour)")
@@ -34,7 +36,7 @@ struct PickerView: View {
                             Text("hours")
                                 .bold()
                             
-                            //picker two
+                            //MARK: Picker Two
                             Picker(selection: $selectedMinute, label: Text("hours")) {
                                 ForEach (minutes, id: \.self) { minute in
                                     Text("\(minute)")
@@ -44,7 +46,7 @@ struct PickerView: View {
                             Text("min")
                                 .bold()
                             
-                            //picker three
+                            //MARK: Picker Three
                             Picker(selection: $selectedSecond, label: Text("hours")) {
                                 ForEach (seconds, id: \.self) { second in
                                     Text("\(second)")
@@ -55,12 +57,13 @@ struct PickerView: View {
                                 .bold()
                         }
                     }
+                    //MARK: Label
                     Section(header: Text("")){
                         TextField("Label", text: $label)
                     }
                     
                 }
-                
+                //MARK: Navigation Link and Start Button
                 NavigationLink(destination:TimerView(selectedHour: $selectedHour, selectedMinute: $selectedMinute, selectedSecond: $selectedSecond, label: $label, isTimerRunning: $isTimerRunning), isActive: $isTimerRunning){
                     
                     Button(action: {
@@ -72,7 +75,6 @@ struct PickerView: View {
                             .padding(100)
                             .background(Color.clear)
                             .font(.largeTitle)
-                            .bold()
                     }
                 }
             }

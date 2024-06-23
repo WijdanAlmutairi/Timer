@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		A8A1EB172C0CEBA100C8C811 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A1EB162C0CEBA100C8C811 /* TimerView.swift */; };
 		A8AC35CA2B717AE2004453FB /* TimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AC35C92B717AE2004453FB /* TimerApp.swift */; };
-		A8AC35CC2B717AE2004453FB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AC35CB2B717AE2004453FB /* ContentView.swift */; };
 		A8AC35CE2B717AE3004453FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8AC35CD2B717AE3004453FB /* Assets.xcassets */; };
 		A8AC35D12B717AE3004453FB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8AC35D02B717AE3004453FB /* Preview Assets.xcassets */; };
 		A8AC35DB2B717AE3004453FB /* TimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AC35DA2B717AE3004453FB /* TimerTests.swift */; };
@@ -40,7 +39,6 @@
 		A8A1EB162C0CEBA100C8C811 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		A8AC35C62B717AE2004453FB /* Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8AC35C92B717AE2004453FB /* TimerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerApp.swift; sourceTree = "<group>"; };
-		A8AC35CB2B717AE2004453FB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A8AC35CD2B717AE3004453FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A8AC35D02B717AE3004453FB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A8AC35D62B717AE3004453FB /* TimerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TimerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,7 +101,6 @@
 			children = (
 				A8AC35F32B72B248004453FB /* Info.plist */,
 				A8AC35C92B717AE2004453FB /* TimerApp.swift */,
-				A8AC35CB2B717AE2004453FB /* ContentView.swift */,
 				A8AC35F82B72B924004453FB /* PickerView.swift */,
 				A8A1EB162C0CEBA100C8C811 /* TimerView.swift */,
 				A8AC35CD2B717AE3004453FB /* Assets.xcassets */,
@@ -269,7 +266,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8AC35CC2B717AE2004453FB /* ContentView.swift in Sources */,
 				A8AC35CA2B717AE2004453FB /* TimerApp.swift in Sources */,
 				A8A1EB172C0CEBA100C8C811 /* TimerView.swift in Sources */,
 				A8AC35F92B72B924004453FB /* PickerView.swift in Sources */,
